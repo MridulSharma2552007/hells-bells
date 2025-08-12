@@ -1,4 +1,6 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hells_bells/colors/app_colors.dart';
 
 class PreferencesPage extends StatelessWidget {
@@ -8,44 +10,75 @@ class PreferencesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            height: 400,
-            width: double.infinity,
-
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black26,
-                  blurRadius: 10,
-                  offset: Offset(0, 5), // changes position of shadow
+      body: PageView(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 60),
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                 Colors.brown.withOpacity(0.7), // peach pastel
+                    const Color(0xFFFFDDE4).withOpacity(0.7), // blush pink
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
                 ),
-              ],
-            ),
-            child: PageView(
-              children: [
-                Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.brown,
+                borderRadius: BorderRadius.circular(25),
+                border: Border.all(
+                  color: Colors.white.withOpacity(0.3),
+                  width: 1.5,
                 ),
-                
-                Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.blue),    
-                Container(
-                  height: 100,        
-                  width: 100,
-                  color: Colors.green),
-              ],
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(25),
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          flex: 4,
+                          child: Image.asset(
+                            'assets/doofs/choice.png',
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        Text(
+                          'Wake Your Own Way',
+                          style: GoogleFonts.rubikSprayPaint(
+                            fontSize: 26,
+                            color: Colors.black87,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: 12),
+                        Text(
+                          'Set alarms that suit your routine —\nno fuss, just your perfect wake-up call.',
+                          style: GoogleFonts.rubik(
+                            fontSize: 14,
+                            color: Colors.black.withOpacity(0.6),
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: 20),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
             ),
           ),
-        ),
+
+          // Placeholder for page 2
+          Container(color: Colors.blue),
+
+          // Placeholder for page 3
+          Container(color: Colors.green),
+        ],
       ),
     );
   }

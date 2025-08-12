@@ -13,7 +13,6 @@ class Splashscreen extends StatefulWidget {
 class _SplashscreenState extends State<Splashscreen> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     Future.delayed(Duration(seconds: 3), () {
       if (mounted) {
@@ -35,7 +34,7 @@ class _SplashscreenState extends State<Splashscreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/images/clock.png',
+              'assets/images/logo.png',
             ), // Ensure this path is correct
             SizedBox(height: 10),
             Text(
